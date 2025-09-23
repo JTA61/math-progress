@@ -7,7 +7,7 @@ import {
   ReactFlow,
   addEdge,
   useNodesState,
-  useEdgesState,
+  useEdgesState
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
@@ -19,10 +19,7 @@ import graphData from './data/graph.yaml'; // Importez le fichier YAML
 export default function App() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const onConnect = useCallback(
-    (connection) => setEdges((edges) => addEdge(connection, edges)),
-    [setEdges]
-  );
+
 
   const [graph, setGraph] = useState([]);
 
@@ -44,7 +41,6 @@ export default function App() {
       edges={edges}
       edgeTypes={edgeTypes}
       onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
       fitView
     >
       <Background />
