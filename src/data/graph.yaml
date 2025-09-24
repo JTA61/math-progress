@@ -1,5 +1,5 @@
 #each line is an edge on a directed graph with the beginner node on the left and the end on the right
-graph:
+graphData:
   - AAA000 -> ARI000
   - AAA000 -> GRM000
   - AAA000 -> LON000
