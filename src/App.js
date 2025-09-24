@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import yaml from 'js-yaml';
+import React from 'react';
 import {
   Background,
   Controls,
   MiniMap,
   ReactFlow,
-  addEdge,
   useNodesState,
   useEdgesState
 } from "@xyflow/react";
@@ -14,24 +12,10 @@ import "@xyflow/react/dist/style.css";
 
 import { initialNodes, nodeTypes } from "./components/nodes";
 import { initialEdges, edgeTypes } from "./components/edges";
-import graphData from './data/graph.yaml'; // Importez le fichier YAML
 
 export default function App() {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-
-  const [graph, setGraph] = useState([]);
-
-  useEffect(() => {
-    // Charger le graphe depuis le fichier YAML
-    const loadGraph = async () => {
-      const data = yaml.load(graphData);
-      setGraph(data.graph);
-    };
-
-    loadGraph();
-  }, []);
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
 
   return (
     <ReactFlow
